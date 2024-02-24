@@ -9,7 +9,7 @@ export default function Playlists() {
   useEffect(() => {
     const getPlaylistData = async () => {
       const response = await axios.get(
-        "https://api.spotify.com/v1/users/smedjan/playlists",
+        "https://api.spotify.com/v1/me/playlists",
         {
           headers: {
             Authorization: "Bearer " + token,
@@ -23,14 +23,11 @@ export default function Playlists() {
       });
       dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
     };
-
     getPlaylistData();
   }, [token, dispatch]);
-
   const changeCurrentPlaylist = (selectedPlaylistId) => {
     dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
   };
-
   return (
     <Container>
       <ul>
@@ -56,7 +53,7 @@ const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    height: 53vh;
+    height: 55vh;
     max-height: 100%;
     overflow: auto;
     &::-webkit-scrollbar {

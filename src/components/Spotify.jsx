@@ -23,7 +23,6 @@ export default function Spotify() {
         userUrl: data.external_urls.spotify,
         name: data.display_name,
       };
-      console.log(userInfo);
       dispatch({ type: reducerCases.SET_USER, userInfo });
     };
     getUserInfo();

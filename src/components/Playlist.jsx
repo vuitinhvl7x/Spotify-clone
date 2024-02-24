@@ -18,18 +18,19 @@ export default function Playlists() {
         }
       );
       const { items } = response.data;
-      console.log(items);
       const playlists = items.map(({ name, id }) => {
         return { name, id };
       });
       dispatch({ type: reducerCases.SET_PLAYLISTS, playlists });
     };
+
     getPlaylistData();
   }, [token, dispatch]);
 
   const changeCurrentPlaylist = (selectedPlaylistId) => {
     dispatch({ type: reducerCases.SET_PLAYLIST_ID, selectedPlaylistId });
   };
+
   return (
     <Container>
       <ul>
